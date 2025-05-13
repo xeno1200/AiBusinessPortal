@@ -106,19 +106,9 @@ export function configureAuth(app: express.Express): void {
     });
   });
 
-  // Admin-only middleware for protected routes
-  export const requireAdmin = (req: Request, res: Response, next: NextFunction) => {
-    if (!req.isAuthenticated()) {
-      return res.status(401).json({ error: 'Authentication required' });
-    }
-
-    const user = req.user as User;
-    if (!user.isAdmin) {
-      return res.status(403).json({ error: 'Admin access required' });
-    }
-
-    next();
-  };
+  // Register auth routes
+  app.use('/api/auth', authRouter);
+}
 
   // Register auth routes
   app.use('/api/auth', authRouter);
