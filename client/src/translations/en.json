@@ -1,10 +1,10 @@
 {
   "meta": {
-    "homeTitle": "AI Phone Agent | Small Business Solutions",
+    "homeTitle": "IOBIC | Small Business Solutions",
     "homeDescription": "Transform your customer service with AI-powered phone agents that handle calls, appointments, and inquiries 24/7 for your small business."
   },
   "header": {
-    "logo": "AI Phone Agent",
+    "logo": "IOBIC",
     "features": "Features",
     "useCases": "Use Cases",
     "pricing": "Pricing",
@@ -155,7 +155,7 @@
     "thankYouMessage": "We've received your information and will contact you soon."
   },
   "footer": {
-    "logo": "AI Phone Agent",
+    "logo": "IOBIC",
     "tagline": "Empowering small businesses with enterprise-level phone capabilities through AI technology.",
     "quickLinks": "Quick Links",
     "features": "Features",
@@ -169,6 +169,6 @@
     "newsletter": "Newsletter",
     "subscribeText": "Subscribe to get the latest news and updates.",
     "emailPlaceholder": "Email address",
-    "copyright": "AI Phone Agent. All rights reserved."
+    "copyright": "IOBIC. All rights reserved."
   }
 }

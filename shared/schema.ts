@@ -34,7 +34,10 @@ export const contactSchema = createInsertSchema(contacts).pick({
   email: true,
   phone: true,
   businessType: true,
-});
+}).transform((data) => ({
+  ...data,
+  businessType: data.businessType || null
+}));
 
 export type InsertContact = z.infer<typeof contactSchema>;
 export type Contact = typeof contacts.$inferSelect;
