@@ -48,31 +48,57 @@ const AgentDemo = () => {
   const demoMessages = getScenarios();
 
   const startDemo = () => {
-    setDemoState("calling");
+    // Reset state and start calling
     setConversation([]);
     setMessageIndex(0);
-    
-    // Simulate phone pickup
-    setTimeout(() => {
-      setDemoState("conversation");
-      addNextMessage();
-    }, 2000);
+    setShowTyping(false);
+    setDemoState("calling");
   };
 
   const endDemo = () => {
     setDemoState("ended");
-    
-    // Reset after a delay
-    setTimeout(() => {
-      setDemoState("idle");
-      setConversation([]);
-      setMessageIndex(0);
-    }, 3000);
   };
+  
+  // Handle state transitions with useEffect
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    
+    if (demoState === "calling") {
+      // Simulate phone pickup after a delay
+      timer = setTimeout(() => {
+        setDemoState("conversation");
+      }, 2000);
+    } else if (demoState === "ended") {
+      // Reset to idle after a delay
+      timer = setTimeout(() => {
+        setDemoState("idle");
+        setConversation([]);
+        setMessageIndex(0);
+        setShowTyping(false);
+      }, 3000);
+    }
+    
+    // Cleanup function
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [demoState]);
+  
+  // Start conversation when entering conversation state
+  useEffect(() => {
+    if (demoState === "conversation" && conversation.length === 0) {
+      addNextMessage();
+    }
+  }, [demoState, conversation.length]);
 
+  // Process next message in the conversation
   const addNextMessage = () => {
+    // Prevent continuing if demo is not in conversation state
+    if (demoState !== "conversation") return;
+    
     if (messageIndex < demoMessages.length) {
       const currentMessage = demoMessages[messageIndex];
+      const newIndex = messageIndex + 1;
       
       // Show typing indicator for agent messages
       if (currentMessage.sender === "agent") {
@@ -80,13 +106,21 @@ const AgentDemo = () => {
         
         // Simulate typing
         setTimeout(() => {
+          // Check if still in conversation state
+          if (demoState !== "conversation") return;
+          
           setShowTyping(false);
           setConversation(prev => [...prev, currentMessage as { sender: "agent" | "user"; text: string }]);
-          setMessageIndex(prev => prev + 1);
+          setMessageIndex(newIndex);
           
           // Add delay before next message
-          if (messageIndex + 1 < demoMessages.length) {
-            setTimeout(addNextMessage, 1500);
+          if (newIndex < demoMessages.length) {
+            setTimeout(() => {
+              // Check again before proceeding to next message
+              if (demoState === "conversation") {
+                addNextMessage();
+              }
+            }, 1500);
           } else {
             // End conversation
             setTimeout(endDemo, 2000);
@@ -95,10 +129,15 @@ const AgentDemo = () => {
       } else {
         // User messages appear immediately
         setConversation(prev => [...prev, currentMessage as { sender: "agent" | "user"; text: string }]);
-        setMessageIndex(prev => prev + 1);
+        setMessageIndex(newIndex);
         
         // Add delay before next message
-        setTimeout(addNextMessage, 1000);
+        setTimeout(() => {
+          // Check if still in conversation state
+          if (demoState === "conversation") {
+            addNextMessage();
+          }
+        }, 1000);
       }
     }
   };
@@ -106,11 +145,11 @@ const AgentDemo = () => {
   // When language changes, reset demo and update messages
   const { i18n } = useTranslation();
   useEffect(() => {
-    if (demoState !== "idle") {
-      setDemoState("idle");
-      setConversation([]);
-      setMessageIndex(0);
-    }
+    // Force reset the demo when language changes
+    setDemoState("idle");
+    setConversation([]);
+    setMessageIndex(0);
+    setShowTyping(false);
   }, [i18n.language]);
 
   return (
