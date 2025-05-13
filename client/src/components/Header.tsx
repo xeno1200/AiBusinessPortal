@@ -57,12 +57,6 @@ const Header = () => {
                 {t("header.useCases")}
               </a>
               <a
-                href="#demo"
-                className="text-gray-600 hover:text-primary-600 transition duration-150"
-              >
-                {t("header.demo")}
-              </a>
-              <a
                 href="#pricing"
                 className="text-gray-600 hover:text-primary-600 transition duration-150"
               >
@@ -112,13 +106,6 @@ const Header = () => {
               onClick={() => setMobileMenuOpen(false)}
             >
               {t("header.useCases")}
-            </a>
-            <a
-              href="#demo"
-              className="text-gray-600 hover:text-primary-600 transition duration-150"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("header.demo")}
             </a>
             <a
               href="#pricing"
