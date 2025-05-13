@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "homeTitle": "AI Phone Agent | Small Business Solutions",
+    "homeDescription": "Transform your customer service with AI-powered phone agents that handle calls, appointments, and inquiries 24/7 for your small business."
+  },
+  "header": {
+    "logo": "AI Phone Agent",
+    "features": "Features",
+    "useCases": "Use Cases",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "getStarted": "Get Started",
+    "language": "Language"
+  },
+  "hero": {
+    "title": "Smart AI Phone Agents for Small Businesses",
+    "description": "Transform your customer service with AI-powered phone agents that handle calls, appointments, and inquiries 24/7, giving your small business enterprise-level capabilities.",
+    "tryFree": "Try It Free",
+    "seeExamples": "See Examples"
+  },
+  "features": {
+    "title": "How Our AI Phone Agent Works",
+    "subtitle": "Advanced technology made simple for your business",
+    "feature1": {
+      "title": "24/7 Call Answering",
+      "description": "Never miss a call again. Our AI handles all customer calls at any time of day or night, ensuring you capture every business opportunity."
+    },
+    "feature2": {
+      "title": "Smart Appointment Scheduling",
+      "description": "The AI agent checks your availability, schedules appointments, and sends confirmation messages to both you and your clients."
+    },
+    "feature3": {
+      "title": "Natural Conversations",
+      "description": "Our advanced AI understands context and speaks naturally, providing your customers with a seamless and professional experience."
+    },
+    "feature4": {
+      "title": "Multilingual Support",
+      "description": "Communicate with your customers in Bulgarian, English, and other languages, expanding your business reach."
+    },
+    "feature5": {
+      "title": "Call Analytics",
+      "description": "Gain insights from your calls with detailed analytics on call volume, peak times, common questions, and customer satisfaction."
+    },
+    "feature6": {
+      "title": "Easy Integration",
+      "description": "Seamlessly connects with your existing business tools and phone systems - no complex setup required."
+    }
+  },
+  "useCases": {
+    "title": "Perfect for Small Businesses",
+    "subtitle": "See how businesses like yours are using our AI phone agent",
+    "ctaButton": "Find Out How It Works for Your Business",
+    "case1": {
+      "title": "Hair & Beauty Salons",
+      "benefit1": "Manage appointment bookings and reschedules automatically",
+      "benefit2": "Answer questions about services, pricing, and availability",
+      "benefit3": "Send appointment reminders to reduce no-shows",
+      "testimonial": "Our AI phone agent handles over 70% of our calls, freeing up our stylists to focus on clients.",
+      "author": "- Maria Dimitrova, Bella Salon"
+    },
+    "case2": {
+      "title": "Hotels & Accommodations",
+      "benefit1": "Handle reservation inquiries and bookings 24/7",
+      "benefit2": "Provide information about rooms, amenities, and local attractions",
+      "benefit3": "Virtual reception desk that never closes",
+      "testimonial": "Our small family hotel can now offer 24/7 reception services without the overhead of night staff.",
+      "author": "- Georgi Petrov, Mountain View Hotel"
+    },
+    "case3": {
+      "title": "Auto Service Centers",
+      "benefit1": "Schedule service appointments and follow-ups",
+      "benefit2": "Answer common questions about service options and pricing",
+      "benefit3": "Send service reminders and maintenance tips",
+      "testimonial": "We've increased our appointment bookings by 35% since implementing the AI phone agent.",
+      "author": "- Stefan Ivanov, Pro Auto Service"
+    }
+  },
+  "pricing": {
+    "title": "Simple, Affordable Pricing",
+    "subtitle": "No long-term contracts. Scale up or down as your business needs change.",
+    "perMonth": "/month",
+    "getStarted": "Get Started",
+    "contactSales": "Contact Sales",
+    "mostPopular": "MOST POPULAR",
+    "starter": {
+      "name": "Starter",
+      "feature1": "Up to 100 calls per month",
+      "feature2": "Basic appointment scheduling",
+      "feature3": "2 language support (BG + EN)",
+      "feature4": "Email support"
+    },
+    "professional": {
+      "name": "Professional",
+      "feature1": "Up to 500 calls per month",
+      "feature2": "Advanced scheduling with calendar integration",
+      "feature3": "3 language support",
+      "feature4": "Call analytics dashboard",
+      "feature5": "Priority email and phone support"
+    },
+    "business": {
+      "name": "Business",
+      "feature1": "Unlimited calls",
+      "feature2": "Complete business integration",
+      "feature3": "5+ language support",
+      "feature4": "Advanced analytics and reports",
+      "feature5": "Dedicated account manager",
+      "feature6": "Custom AI training for your business"
+    }
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "testimonial1": {
+      "name": "Ivan Georgiev",
+      "position": "Owner, AutoFix Service",
+      "content": "As a small auto repair shop, we used to miss calls when we were busy under the hood. Now our AI assistant handles all inquiries professionally, schedules appointments, and has increased our bookings by 40%. Best business decision we made this year!"
+    },
+    "testimonial2": {
+      "name": "Elena Todorova",
+      "position": "Manager, Sunset Hotel",
+      "content": "Our small boutique hotel couldn't afford 24/7 reception staff. With the AI phone agent, we now offer round-the-clock booking and information services in multiple languages. Our guests are impressed by the responsiveness, and we've seen direct bookings increase while reducing staffing costs."
+    }
+  },
+  "contact": {
+    "title": "Ready to transform your business?",
+    "subtitle": "Fill out the form and we'll get in touch to discuss how our AI phone agent can help your business.",
+    "form": {
+      "nameLabel": "Full Name",
+      "businessLabel": "Business Name",
+      "emailLabel": "Email Address",
+      "phoneLabel": "Phone Number",
+      "businessTypeLabel": "Business Type",
+      "businessTypePlaceholder": "Select your business type",
+      "submitButton": "Request Information",
+      "submitting": "Submitting..."
+    },
+    "infoTitle": "How can we help?",
+    "info": {
+      "locationTitle": "Office Location",
+      "phoneTitle": "Phone",
+      "emailTitle": "Email",
+      "socialTitle": "We're also on social media:"
+    },
+    "businessTypes": {
+      "salon": "Hair/Beauty Salon",
+      "hotel": "Hotel/Accommodation",
+      "auto": "Auto Service",
+      "restaurant": "Restaurant/Café",
+      "other": "Other"
+    },
+    "successTitle": "Form Submitted",
+    "successMessage": "Thank you for your interest. We'll be in touch shortly.",
+    "errorTitle": "Submission Error",
+    "errorMessage": "There was a problem submitting the form. Please try again.",
+    "thankYouTitle": "Thank You!",
+    "thankYouMessage": "We've received your information and will contact you soon."
+  },
+  "footer": {
+    "logo": "AI Phone Agent",
+    "tagline": "Empowering small businesses with enterprise-level phone capabilities through AI technology.",
+    "quickLinks": "Quick Links",
+    "features": "Features",
+    "useCases": "Use Cases",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "legal": "Legal",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy",
+    "newsletter": "Newsletter",
+    "subscribeText": "Subscribe to get the latest news and updates.",
+    "emailPlaceholder": "Email address",
+    "copyright": "AI Phone Agent. All rights reserved."
+  }
+}
