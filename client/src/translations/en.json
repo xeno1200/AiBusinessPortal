@@ -3,6 +3,29 @@
     "homeTitle": "IOBIC | Small Business Solutions",
     "homeDescription": "Transform your customer service with AI-powered phone agents that handle calls, appointments, and inquiries 24/7 for your small business."
   },
+  "agentDemo": {
+    "title": "See the AI Phone Agent in Action",
+    "subtitle": "Try our interactive demo to experience a conversation with our AI Phone Agent",
+    "tryDemo": "Start Demo",
+    "phoneUI": {
+      "network": "IOBIC Network",
+      "botName": "IOBIC Assistant",
+      "you": "You",
+      "idleMessage": "Click the button below to start the interactive demo",
+      "startCall": "Start Call",
+      "calling": "Calling...",
+      "callEnded": "Call Ended"
+    },
+    "messages": {
+      "greeting": "Hello, thank you for calling IOBIC. This is your AI assistant speaking. How may I help you today?",
+      "userQuestion1": "Hi, I'd like to book a haircut appointment for tomorrow afternoon.",
+      "agentResponse1": "I'd be happy to help you book a haircut appointment. We have availability at 2:00 PM, 3:30 PM, and 5:00 PM tomorrow. Which time would work best for you?",
+      "userQuestion2": "3:30 PM would be perfect. Can I book with hair stylist Maria if she's available?",
+      "agentResponse2": "Let me check that for you... Yes, Maria is available at 3:30 PM tomorrow. Would you like me to book that appointment for you?",
+      "userConfirmation": "Yes, please go ahead and book it.",
+      "agentConfirmation": "Great! I've booked your haircut appointment with Maria for tomorrow at 3:30 PM. You'll receive a confirmation text message shortly. Is there anything else I can assist you with today?"
+    }
+  },
   "header": {
     "logo": "IOBIC",
     "features": "Features",

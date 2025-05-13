@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import UseCases from "@/components/UseCases";
+import AgentDemo from "@/components/AgentDemo";
 import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
@@ -25,6 +26,7 @@ const Home = () => {
       <Hero />
       <Features />
       <UseCases />
+      <AgentDemo />
       <Pricing />
       <Testimonials />
       <ContactForm />
