@@ -3,8 +3,24 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { contactSchema } from "@shared/schema";
 import { fromZodError } from "zod-validation-error";
+import { configureAuth } from "./auth";
+import { registerCmsRoutes } from "./cmsRoutes";
+import initializeDatabase from "./initDb";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Initialize the database with default admin and settings
+  try {
+    await initializeDatabase();
+    console.log("Database initialized successfully");
+  } catch (error) {
+    console.error("Error initializing database:", error);
+  }
+  
+  // Configure authentication
+  configureAuth(app);
+  
+  // Register CMS routes
+  registerCmsRoutes(app);
   // Contact form submission endpoint
   app.post("/api/contact", async (req, res) => {
     try {

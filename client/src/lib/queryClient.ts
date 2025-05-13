@@ -8,18 +8,30 @@ async function throwIfResNotOk(res: Response) {
 }
 
 export async function apiRequest(
-  method: string,
-  url: string,
-  data?: unknown | undefined,
-): Promise<Response> {
-  const res = await fetch(url, {
-    method,
-    headers: data ? { "Content-Type": "application/json" } : {},
-    body: data ? JSON.stringify(data) : undefined,
-    credentials: "include",
+  endpoint: string,
+  options: RequestInit = {}
+): Promise<any> {
+  const defaultHeaders = {
+    'Content-Type': 'application/json',
+  };
+
+  const res = await fetch(endpoint, {
+    headers: {
+      ...defaultHeaders,
+      ...options.headers,
+    },
+    credentials: 'include',
+    ...options,
   });
 
   await throwIfResNotOk(res);
+  
+  // Parse JSON if the response is not empty
+  const contentType = res.headers.get('content-type');
+  if (contentType && contentType.includes('application/json') && res.status !== 204) {
+    return res.json();
+  }
+  
   return res;
 }
 

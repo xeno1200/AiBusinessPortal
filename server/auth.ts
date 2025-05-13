@@ -110,10 +110,6 @@ export function configureAuth(app: express.Express): void {
   app.use('/api/auth', authRouter);
 }
 
-  // Register auth routes
-  app.use('/api/auth', authRouter);
-}
-
 // Middleware to require authentication
 export const requireAuth = (req: Request, res: Response, next: NextFunction) => {
   if (!req.isAuthenticated()) {

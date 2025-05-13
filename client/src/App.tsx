@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import Login from "@/pages/admin/Login";
+import Dashboard from "@/pages/admin/Dashboard";
 import { useTranslation } from "react-i18next";
 import { ThemeProvider } from "next-themes";
 import Header from "@/components/Header";
@@ -14,6 +16,8 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/admin/login" component={Login} />
+      <Route path="/admin" component={Dashboard} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -22,16 +26,19 @@ function Router() {
 function App() {
   const { i18n } = useTranslation();
 
+  // Check if current path is admin route
+  const isAdmin = window.location.pathname.startsWith('/admin');
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider attribute="class">
         <TooltipProvider>
           <div className={`${i18n.language}`}>
-            <Header />
+            {!isAdmin && <Header />}
             <main>
               <Router />
             </main>
-            <Footer />
+            {!isAdmin && <Footer />}
             <Toaster />
           </div>
         </TooltipProvider>
