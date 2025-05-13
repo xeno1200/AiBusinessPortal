@@ -78,6 +78,9 @@ export const contentTypeEnum = pgEnum('content_type', [
   'setting'
 ]);
 
+// Helper type for TypeScript
+export type ContentType = 'hero' | 'feature' | 'use_case' | 'pricing_plan' | 'testimonial' | 'setting';
+
 // Content items table (for managing dynamic site content)
 export const contentItems = pgTable("content_items", {
   id: serial("id").primaryKey(),
