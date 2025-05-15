@@ -110,18 +110,7 @@ async function initializeDatabase() {
   }
 }
 
-// Run if this file is executed directly
-// For ESM compatibility
-if (import.meta.url === import.meta.resolve('./initDb.ts')) {
-  initializeDatabase()
-    .then(() => {
-      console.log('Database initialization script completed successfully');
-      process.exit(0);
-    })
-    .catch((error) => {
-      console.error('Database initialization failed:', error);
-      process.exit(1);
-    });
-}
+// We don't need to run auto-initialization here
+// This file is only imported in routes.ts
 
 export default initializeDatabase;

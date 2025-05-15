@@ -14,6 +14,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     console.log("Database initialized successfully");
   } catch (error) {
     console.error("Error initializing database:", error);
+    // Continue with server startup even if database initialization fails
   }
   
   // Configure authentication
@@ -21,6 +22,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // Register CMS routes
   registerCmsRoutes(app);
+  
+  // Add an API status endpoint for debugging
+  app.get("/api/status", (_req, res) => {
+    res.json({
+      status: "ok",
+      environment: process.env.NODE_ENV,
+      timestamp: new Date().toISOString()
+    });
+  });
   // Contact form submission endpoint
   app.post("/api/contact", async (req, res) => {
     try {

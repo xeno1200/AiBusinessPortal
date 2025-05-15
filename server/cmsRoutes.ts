@@ -57,27 +57,7 @@ export function registerCmsRoutes(app: express.Express): void {
 
   // Content Items Routes
   
-  // Get all content items by type and language
-  cmsRouter.get('/content/:type', async (req: Request, res: Response) => {
-    try {
-      const { type } = req.params;
-      const language = req.query.language as string || 'en';
-      
-      // Validate type
-      const validTypes = ['hero', 'feature', 'use_case', 'pricing_plan', 'testimonial', 'setting'];
-      if (!validTypes.includes(type)) {
-        return res.status(400).json({ error: 'Invalid content type' });
-      }
-      
-      const items = await dbStorage.getContentItemsByType(type as ContentType, language);
-      res.json(items);
-    } catch (error) {
-      console.error('Error fetching content items:', error);
-      res.status(500).json({ error: 'Failed to fetch content items' });
-    }
-  });
-  
-  // Get single content item by ID
+  // Get single content item by ID - this needs to come BEFORE the more general route
   cmsRouter.get('/content/item/:id', async (req: Request, res: Response) => {
     try {
       const id = parseInt(req.params.id);
@@ -94,6 +74,31 @@ export function registerCmsRoutes(app: express.Express): void {
     } catch (error) {
       console.error('Error fetching content item:', error);
       res.status(500).json({ error: 'Failed to fetch content item' });
+    }
+  });
+  
+  // Get all content items by type and language
+  cmsRouter.get('/content/:type', async (req: Request, res: Response) => {
+    try {
+      const { type } = req.params;
+      const language = req.query.language as string || 'en';
+      
+      // Skip if the type is 'item' as it's handled by the route above
+      if (type === 'item') {
+        return res.status(400).json({ error: 'Use /content/item/:id for item retrieval' });
+      }
+      
+      // Validate type
+      const validTypes = ['hero', 'feature', 'use_case', 'pricing_plan', 'testimonial', 'setting'];
+      if (!validTypes.includes(type)) {
+        return res.status(400).json({ error: 'Invalid content type' });
+      }
+      
+      const items = await dbStorage.getContentItemsByType(type as ContentType, language);
+      res.json(items);
+    } catch (error) {
+      console.error('Error fetching content items:', error);
+      res.status(500).json({ error: 'Failed to fetch content items' });
     }
   });
   

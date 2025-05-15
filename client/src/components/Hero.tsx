@@ -1,9 +1,12 @@
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useCmsContent } from "@/hooks/use-cms-content";
 
 const Hero = () => {
   const { t } = useTranslation();
+  const { contentItems, isLoading } = useCmsContent('hero');
+  const heroContent = contentItems[0]?.content || {};
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -38,14 +41,14 @@ const Hero = () => {
             className="font-heading text-4xl md:text-5xl font-bold text-gray-900 mb-6"
             variants={itemVariants}
           >
-            {t("hero.title")}
+            {heroContent.title || t("hero.title")}
           </motion.h1>
           
           <motion.p 
             className="text-lg text-gray-700 mb-8 leading-relaxed"
             variants={itemVariants}
           >
-            {t("hero.description")}
+            {heroContent.subtitle || t("hero.description")}
           </motion.p>
           
           <motion.div 
@@ -53,7 +56,9 @@ const Hero = () => {
             variants={itemVariants}
           >
             <Button size="lg" asChild>
-              <a href="#contact">{t("hero.tryFree")}</a>
+              <a href={heroContent.cta?.url || "#contact"}>
+                {heroContent.cta?.text || t("hero.tryFree")}
+              </a>
             </Button>
             
             <Button size="lg" variant="outline" asChild>
@@ -64,7 +69,7 @@ const Hero = () => {
         
         <div className="hidden md:block absolute top-0 right-0 w-1/2 h-full">
           <img 
-            src="https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+            src={heroContent.image || "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"} 
             alt="Modern business reception" 
             className="object-cover w-full h-full rounded-l-3xl shadow-2xl" 
           />

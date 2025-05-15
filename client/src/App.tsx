@@ -7,6 +7,9 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Login from "@/pages/admin/Login";
 import Dashboard from "@/pages/admin/Dashboard";
+import ContentList from "@/pages/admin/ContentList";
+import ContentForm from "@/pages/admin/ContentForm";
+import ServerTest from "@/pages/ServerTest";
 import { useTranslation } from "react-i18next";
 import { ThemeProvider } from "next-themes";
 import Header from "@/components/Header";
@@ -18,6 +21,10 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/admin/login" component={Login} />
       <Route path="/admin" component={Dashboard} />
+      <Route path="/admin/content" component={ContentList} />
+      <Route path="/admin/content/new" component={ContentForm} />
+      <Route path="/admin/content/edit/:id" component={ContentForm} />
+      <Route path="/server-test" component={ServerTest} />
       <Route component={NotFound} />
     </Switch>
   );

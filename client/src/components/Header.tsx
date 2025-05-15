@@ -4,9 +4,11 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import LanguageToggle from "./LanguageToggle";
 import { Menu, X } from "lucide-react";
+import { useSiteSettings } from "@/hooks/use-cms-content";
 
 const Header = () => {
   const { t } = useTranslation();
+  const { settings } = useSiteSettings();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -37,7 +39,7 @@ const Header = () => {
                 <line x1="12" y1="16" x2="12" y2="16" />
               </svg>
               <span className="font-heading font-bold text-xl text-gray-900">
-                {t("header.logo")}
+                {settings.site_title || t("header.logo")}
               </span>
             </Link>
           </div>

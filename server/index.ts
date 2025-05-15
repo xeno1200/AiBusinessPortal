@@ -3,6 +3,14 @@ import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
+
+// Log all incoming requests for debugging
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+  next();
+});
+
+// Body parsing middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -43,8 +51,9 @@ app.use((req, res, next) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
 
+    console.error("Server error:", err);
     res.status(status).json({ message });
-    throw err;
+    // Don't throw the error, just log it
   });
 
   // importantly only setup vite in development and after
