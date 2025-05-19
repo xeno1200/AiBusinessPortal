@@ -110,7 +110,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
     <div className="min-h-screen bg-gray-100 flex flex-col md:flex-row">
       {/* Mobile menu button */}
       <div className="md:hidden bg-white p-4 shadow flex justify-between items-center">
-        <div className="text-xl font-bold">IOBIC Admin</div>
+        <div className="text-xl font-bold">TALQIO Admin</div>
         <Button 
           variant="ghost" 
           size="icon" 
@@ -157,7 +157,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
       <aside className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
         <div className="bg-gray-800 text-white flex flex-col h-full">
           <div className="h-16 flex items-center px-6 border-b border-gray-700">
-            <div className="text-xl font-bold">IOBIC Admin</div>
+            <div className="text-xl font-bold">TALQIO Admin</div>
           </div>
           
           <div className="flex-1 flex flex-col overflow-y-auto py-4 px-3 space-y-1">

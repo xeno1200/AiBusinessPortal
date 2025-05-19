@@ -85,7 +85,7 @@ export function createFallbackContent(type: ContentType, language: string = 'en'
   switch (type) {
     case 'hero':
       content = {
-        title: language === 'bg' ? 'IOBIC AI Телефонен Агент' : 'IOBIC AI Phone Agent',
+        title: language === 'bg' ? 'TALQIO AI Телефонен Агент' : 'TALQIO AI Phone Agent',
         subtitle: language === 'bg' ? 'Никога повече пропуснато обаждане' : 'Never miss a call again',
         cta: {
           text: language === 'bg' ? 'Свържете се с нас' : 'Contact Us',
