@@ -17,7 +17,7 @@
       "callEnded": "Call Ended"
     },
     "messages": {
-      "greeting": "Hello, thank you for calling IOBIC. This is your AI assistant speaking. How may I help you today?",
+      "greeting": "Hello, thank you for calling Talqio. This is your AI assistant speaking. How may I help you today?",
       "userQuestion1": "Hi, I'd like to book a haircut appointment for tomorrow afternoon.",
       "agentResponse1": "I'd be happy to help you book a haircut appointment. We have availability at 2:00 PM, 3:30 PM, and 5:00 PM tomorrow. Which time would work best for you?",
       "userQuestion2": "3:30 PM would be perfect. Can I book with hair stylist Maria if she's available?",
@@ -27,7 +27,7 @@
     }
   },
   "header": {
-    "logo": "IOBIC",
+    "logo": "Talqio",
     "features": "Features",
     "useCases": "Use Cases",
     "demo": "Demo",
@@ -179,7 +179,7 @@
     "thankYouMessage": "We've received your information and will contact you soon."
   },
   "footer": {
-    "logo": "IOBIC",
+    "logo": "Talqio",
     "tagline": "Empowering small businesses with enterprise-level phone capabilities through AI technology.",
     "quickLinks": "Quick Links",
     "features": "Features",
@@ -193,6 +193,6 @@
     "newsletter": "Newsletter",
     "subscribeText": "Subscribe to get the latest news and updates.",
     "emailPlaceholder": "Email address",
-    "copyright": "IOBIC. All rights reserved."
+    "copyright": "Talqio. All rights reserved."
   }
 }
