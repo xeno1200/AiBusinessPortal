@@ -1,6 +1,6 @@
 {
   "meta": {
-    "homeTitle": "IOBIC | Small Business Solutions",
+    "homeTitle": "Talqio | Small Business Solutions",
     "homeDescription": "Transform your customer service with AI-powered phone agents that handle calls, appointments, and inquiries 24/7 for your small business."
   },
   "agentDemo": {
@@ -8,8 +8,8 @@
     "subtitle": "Try our interactive demo to experience a conversation with our AI Phone Agent",
     "tryDemo": "Start Demo",
     "phoneUI": {
-      "network": "IOBIC Network",
-      "botName": "IOBIC Assistant",
+      "network": "Talqio Network",
+      "botName": "Talqio Assistant",
       "you": "You",
       "idleMessage": "Click the button below to start the interactive demo",
       "startCall": "Start Call",

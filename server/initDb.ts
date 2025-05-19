@@ -20,7 +20,7 @@ async function initializeDatabase() {
       const hashedPassword = await bcrypt.hash('admin123', 10);
       
       // Check if email exists
-      const adminEmail = 'admin@iobic.com';
+      const adminEmail = 'admin@talqio.com';
       const existingEmail = await db.select().from(users).where(eq(users.email, adminEmail)).limit(1);
       
       if (existingEmail.length === 0) {
@@ -48,7 +48,7 @@ async function initializeDatabase() {
     const defaultSettings = [
       {
         key: 'site_title',
-        value: 'IOBIC - AI Phone Agent',
+        value: 'Talqio - AI Phone Agent',
         description: 'Website title'
       },
       {
@@ -58,7 +58,7 @@ async function initializeDatabase() {
       },
       {
         key: 'contact_email',
-        value: 'contact@iobic.com',
+        value: 'contact@talqio.com',
         description: 'Contact email address'
       },
       {
@@ -68,12 +68,12 @@ async function initializeDatabase() {
       },
       {
         key: 'facebook_url',
-        value: 'https://facebook.com/iobic',
+        value: 'https://facebook.com/talqio',
         description: 'Facebook page URL'
       },
       {
         key: 'instagram_url',
-        value: 'https://instagram.com/iobic',
+        value: 'https://instagram.com/talqio',
         description: 'Instagram profile URL'
       },
       {
