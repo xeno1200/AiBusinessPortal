@@ -15,7 +15,7 @@ export function configureAuth(app: express.Express): void {
   app.use(
     session({
       cookie: { maxAge: 24 * 60 * 60 * 1000 }, // 24 hours
-      secret: process.env.SESSION_SECRET || 'iobic-cms-secret',
+      secret: process.env.SESSION_SECRET || 'talqio-cms-secret',
       resave: false,
       saveUninitialized: false,
       store: new SessionStore({

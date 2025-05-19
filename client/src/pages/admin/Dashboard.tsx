@@ -73,7 +73,7 @@ export default function Dashboard() {
   return (
     <AdminLayout>
       <Helmet>
-        <title>Admin Dashboard - IOBIC</title>
+        <title>Admin Dashboard - TALQIO</title>
       </Helmet>
       
       <div className="space-y-6">

@@ -41,9 +41,9 @@ export function useSiteSettings() {
       } catch (error) {
         console.error('Error fetching site settings:', error);
         return {
-          site_title: 'IOBIC',
+          site_title: 'TALQIO',
           site_description: 'AI Phone Agent for businesses',
-          contact_email: 'contact@iobic.com',
+          contact_email: 'contact@talqio.com',
           contact_phone: '+1 555-123-4567',
           facebook_url: 'https://facebook.com',
           instagram_url: 'https://instagram.com',
@@ -56,9 +56,9 @@ export function useSiteSettings() {
   
   return {
     settings: data || {
-      site_title: 'IOBIC',
+      site_title: 'TALQIO',
       site_description: 'AI Phone Agent for businesses',
-      contact_email: 'contact@iobic.com',
+      contact_email: 'contact@talqio.com',
       contact_phone: '+1 555-123-4567',
       facebook_url: 'https://facebook.com',
       instagram_url: 'https://instagram.com',

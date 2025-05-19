@@ -85,7 +85,7 @@ export default function Login() {
   return (
     <>
       <Helmet>
-        <title>Admin Login - IOBIC</title>
+        <title>Admin Login - TALQIO</title>
       </Helmet>
       
       <div className="flex justify-center items-center min-h-screen bg-gray-100">

@@ -5,7 +5,7 @@ import ServerCheck from "@/components/ServerCheck";
 export default function ServerTest() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">IOBIC Server Test</h1>
+      <h1 className="text-3xl font-bold mb-6">TALQIO Server Test</h1>
       
       <Card>
         <CardHeader>
