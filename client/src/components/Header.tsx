@@ -47,25 +47,25 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-8">
             <nav className="flex space-x-6">
               <a
-                href="#features"
+                href="/#features"
                 className="text-gray-600 hover:text-primary-600 transition duration-150"
               >
                 {t("header.features")}
               </a>
               <a
-                href="#use-cases"
+                href="/#use-cases"
                 className="text-gray-600 hover:text-primary-600 transition duration-150"
               >
                 {t("header.useCases")}
               </a>
               <a
-                href="#pricing"
+                href="/#pricing"
                 className="text-gray-600 hover:text-primary-600 transition duration-150"
               >
                 {t("header.pricing")}
               </a>
               <a
-                href="#contact"
+                href="/#contact"
                 className="text-gray-600 hover:text-primary-600 transition duration-150"
               >
                 {t("header.contact")}
@@ -74,8 +74,11 @@ const Header = () => {
 
             <div className="flex items-center space-x-4">
               <LanguageToggle />
+              <Button variant="outline" asChild>
+                <Link href="/login">Sign In</Link>
+              </Button>
               <Button asChild>
-                <a href="#contact">{t("header.getStarted")}</a>
+                <Link href="/register">Get Started</Link>
               </Button>
             </div>
           </div>
@@ -96,28 +99,28 @@ const Header = () => {
         <div className={`mobile-menu md:hidden py-4 ${mobileMenuOpen ? "" : "hidden"}`}>
           <nav className="flex flex-col space-y-4">
             <a
-              href="#features"
+              href="/#features"
               className="text-gray-600 hover:text-primary-600 transition duration-150"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t("header.features")}
             </a>
             <a
-              href="#use-cases"
+              href="/#use-cases"
               className="text-gray-600 hover:text-primary-600 transition duration-150"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t("header.useCases")}
             </a>
             <a
-              href="#pricing"
+              href="/#pricing"
               className="text-gray-600 hover:text-primary-600 transition duration-150"
               onClick={() => setMobileMenuOpen(false)}
             >
               {t("header.pricing")}
             </a>
             <a
-              href="#contact"
+              href="/#contact"
               className="text-gray-600 hover:text-primary-600 transition duration-150"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -129,11 +132,18 @@ const Header = () => {
               <LanguageToggle />
             </div>
 
-            <Button asChild className="mt-4 w-full">
-              <a href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                {t("header.getStarted")}
-              </a>
-            </Button>
+            <div className="flex flex-col space-y-2 pt-2">
+              <Button variant="outline" asChild className="w-full">
+                <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
+                  Sign In
+                </Link>
+              </Button>
+              <Button asChild className="w-full">
+                <Link href="/register" onClick={() => setMobileMenuOpen(false)}>
+                  Get Started
+                </Link>
+              </Button>
+            </div>
           </nav>
         </div>
       </div>

@@ -90,6 +90,62 @@ export function configureAuth(app: express.Express): void {
     });
   });
 
+  // Register route
+  authRouter.post('/register', async (req: Request, res: Response) => {
+    try {
+      const { fullName, username, email, password } = req.body;
+
+      // Validate required fields
+      if (!fullName || !username || !email || !password) {
+        return res.status(400).json({ 
+          message: 'All fields are required' 
+        });
+      }
+
+      // Check if user already exists
+      const existingUser = await storage.getUserByUsername(username).catch(() => null);
+      if (existingUser) {
+        return res.status(400).json({ 
+          message: 'Username already exists' 
+        });
+      }
+
+      // Check if email already exists
+      const existingEmail = await storage.getUserByEmail(email).catch(() => null);
+      if (existingEmail) {
+        return res.status(400).json({ 
+          message: 'Email already exists' 
+        });
+      }
+
+      // Hash password
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      // Create user
+      const newUser = await storage.createUser({
+        fullName,
+        username,
+        email,
+        password: hashedPassword,
+        isAdmin: false
+      });
+
+      // Strip password from response
+      const { password: _, ...safeUser } = newUser;
+      
+      res.status(201).json({ 
+        success: true, 
+        message: 'User registered successfully',
+        user: safeUser
+      });
+    } catch (error) {
+      console.error('Registration error:', error);
+      res.status(500).json({ 
+        message: 'Internal server error during registration' 
+      });
+    }
+  });
+
   // Check if user is authenticated
   authRouter.get('/me', (req: Request, res: Response) => {
     if (!req.isAuthenticated()) {
