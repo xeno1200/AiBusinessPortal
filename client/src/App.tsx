@@ -12,6 +12,8 @@ import AdminLogin from "@/pages/admin/Login";
 import AdminDashboard from "@/pages/admin/Dashboard";
 import ContentList from "@/pages/admin/ContentList";
 import ContentForm from "@/pages/admin/ContentForm";
+import UserList from "@/pages/admin/UserList";
+import UserForm from "@/pages/admin/UserForm";
 import ServerTest from "@/pages/ServerTest";
 import { useTranslation } from "react-i18next";
 import { ThemeProvider } from "next-themes";
@@ -30,6 +32,9 @@ function Router() {
       <Route path="/admin/content" component={ContentList} />
       <Route path="/admin/content/new" component={ContentForm} />
       <Route path="/admin/content/edit/:id" component={ContentForm} />
+      <Route path="/admin/users" component={UserList} />
+      <Route path="/admin/users/new" component={UserForm} />
+      <Route path="/admin/users/edit/:id" component={UserForm} />
       <Route path="/server-test" component={ServerTest} />
       <Route component={NotFound} />
     </Switch>

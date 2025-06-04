@@ -16,7 +16,7 @@ import { LogIn, ArrowLeft } from "lucide-react";
 
 const loginSchema = z.object({
   username: z.string().min(1, {
-    message: "Username is required."
+    message: "Username or email is required."
   }),
   password: z.string().min(1, {
     message: "Password is required."
@@ -63,7 +63,7 @@ const Login = () => {
     onError: (error: any) => {
       toast({
         title: "Login failed",
-        description: error.message || "Invalid username or password.",
+        description: error.message || "Invalid username/email or password.",
         variant: "destructive"
       });
     }

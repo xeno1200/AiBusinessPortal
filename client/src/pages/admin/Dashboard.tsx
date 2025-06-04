@@ -18,6 +18,7 @@ import {
   PhoneCall, 
   Mail, 
   FileText, 
+  Users,
   Settings, 
   Layout, 
   Image 
@@ -27,6 +28,7 @@ type DashboardStats = {
   contacts: number;
   newsletterSubscriptions: number;
   contentItems: number;
+  users: number;
   media: number;
   settings: number;
 };
@@ -52,6 +54,7 @@ export default function Dashboard() {
     contacts: 12,
     newsletterSubscriptions: 56,
     contentItems: 23,
+    users: 2,
     media: 8,
     settings: 15
   });
@@ -150,6 +153,26 @@ export default function Dashboard() {
           
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
+              <CardTitle className="text-sm font-medium">Users</CardTitle>
+              <Users className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{stats.users}</div>
+              <p className="text-xs text-muted-foreground">
+                System users
+              </p>
+              <Button 
+                variant="outline" 
+                className="w-full mt-4"
+                onClick={() => setLocation('/admin/users')}
+              >
+                Manage Users
+              </Button>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-sm font-medium">Media Files</CardTitle>
               <Image className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
@@ -199,6 +222,10 @@ export default function Dashboard() {
             <Button variant="outline" onClick={() => setLocation('/admin/content/new')}>
               <FileText className="mr-2 h-4 w-4" />
               Add Content Item
+            </Button>
+            <Button variant="outline" onClick={() => setLocation('/admin/users/new')}>
+              <Users className="mr-2 h-4 w-4" />
+              Add User
             </Button>
             <Button variant="outline" onClick={() => setLocation('/admin/media/upload')}>
               <Image className="mr-2 h-4 w-4" />

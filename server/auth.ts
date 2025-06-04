@@ -32,18 +32,23 @@ export function configureAuth(app: express.Express): void {
   passport.use(
     new LocalStrategy(async (username, password, done) => {
       try {
-        // Find user by username
-        const user = await storage.getUserByUsername(username);
+        // Find user by username or email
+        let user = await storage.getUserByUsername(username);
+        
+        // If not found by username, try by email
+        if (!user) {
+          user = await storage.getUserByEmail(username);
+        }
 
         // User not found
         if (!user) {
-          return done(null, false, { message: 'Incorrect username or password' });
+          return done(null, false, { message: 'Incorrect username/email or password' });
         }
 
         // Check password
         const isValidPassword = await bcrypt.compare(password, user.password);
         if (!isValidPassword) {
-          return done(null, false, { message: 'Incorrect username or password' });
+          return done(null, false, { message: 'Incorrect username/email or password' });
         }
 
         // Success

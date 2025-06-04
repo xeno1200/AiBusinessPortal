@@ -243,6 +243,175 @@ export function registerCmsRoutes(app: express.Express): void {
     }
   });
   
+  // User Management Routes
+  
+  // Get all users (admin only)
+  cmsRouter.get('/users', requireAdmin, async (req: Request, res: Response) => {
+    try {
+      const users = await dbStorage.getUsers();
+      // Remove passwords from response
+      const safeUsers = users.map(user => {
+        const { password, ...safeUser } = user;
+        return safeUser;
+      });
+      res.json(safeUsers);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+      res.status(500).json({ error: 'Failed to fetch users' });
+    }
+  });
+  
+  // Get single user by ID (admin only)
+  cmsRouter.get('/users/:id', requireAdmin, async (req: Request, res: Response) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ error: 'Invalid user ID' });
+      }
+      
+      const user = await dbStorage.getUser(id);
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      
+      // Remove password from response
+      const { password, ...safeUser } = user;
+      res.json(safeUser);
+    } catch (error) {
+      console.error('Error fetching user:', error);
+      res.status(500).json({ error: 'Failed to fetch user' });
+    }
+  });
+  
+  // Create new user (admin only)
+  cmsRouter.post('/users', requireAdmin, async (req: Request, res: Response) => {
+    try {
+      const { fullName, username, email, password, isAdmin } = req.body;
+      
+      // Validate required fields
+      if (!fullName || !username || !email || !password) {
+        return res.status(400).json({ 
+          error: 'All fields are required (fullName, username, email, password)' 
+        });
+      }
+      
+      // Check if username already exists
+      const existingUsername = await dbStorage.getUserByUsername(username).catch(() => null);
+      if (existingUsername) {
+        return res.status(400).json({ error: 'Username already exists' });
+      }
+      
+      // Check if email already exists
+      const existingEmail = await dbStorage.getUserByEmail(email).catch(() => null);
+      if (existingEmail) {
+        return res.status(400).json({ error: 'Email already exists' });
+      }
+      
+      // Create user
+      const newUser = await dbStorage.createUser({
+        fullName,
+        username,
+        email,
+        password, // Will be hashed in storage layer
+        isAdmin: Boolean(isAdmin)
+      });
+      
+      // Remove password from response
+      const { password: _, ...safeUser } = newUser;
+      res.status(201).json(safeUser);
+    } catch (error) {
+      console.error('Error creating user:', error);
+      res.status(500).json({ error: 'Failed to create user' });
+    }
+  });
+  
+  // Update user (admin only)
+  cmsRouter.put('/users/:id', requireAdmin, async (req: Request, res: Response) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ error: 'Invalid user ID' });
+      }
+      
+      // Find the user first
+      const existingUser = await dbStorage.getUser(id);
+      if (!existingUser) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      
+      const { fullName, username, email, password, isAdmin } = req.body;
+      
+      // Check if username conflicts with another user
+      if (username && username !== existingUser.username) {
+        const existingUsername = await dbStorage.getUserByUsername(username).catch(() => null);
+        if (existingUsername && existingUsername.id !== id) {
+          return res.status(400).json({ error: 'Username already exists' });
+        }
+      }
+      
+      // Check if email conflicts with another user
+      if (email && email !== existingUser.email) {
+        const existingEmail = await dbStorage.getUserByEmail(email).catch(() => null);
+        if (existingEmail && existingEmail.id !== id) {
+          return res.status(400).json({ error: 'Email already exists' });
+        }
+      }
+      
+      // Prepare update data
+      const updateData: any = {};
+      if (fullName !== undefined) updateData.fullName = fullName;
+      if (username !== undefined) updateData.username = username;
+      if (email !== undefined) updateData.email = email;
+      if (password !== undefined && password.length > 0) updateData.password = password;
+      if (isAdmin !== undefined) updateData.isAdmin = Boolean(isAdmin);
+      
+      // Update the user
+      const updatedUser = await dbStorage.updateUser(id, updateData);
+      if (!updatedUser) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      
+      // Remove password from response
+      const { password: _, ...safeUser } = updatedUser;
+      res.json(safeUser);
+    } catch (error) {
+      console.error('Error updating user:', error);
+      res.status(500).json({ error: 'Failed to update user' });
+    }
+  });
+  
+  // Delete user (admin only)
+  cmsRouter.delete('/users/:id', requireAdmin, async (req: Request, res: Response) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ error: 'Invalid user ID' });
+      }
+      
+      // Find the user first
+      const existingUser = await dbStorage.getUser(id);
+      if (!existingUser) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      
+      // Prevent deleting the last admin user
+      if (existingUser.isAdmin) {
+        const users = await dbStorage.getUsers();
+        const adminCount = users.filter(u => u.isAdmin).length;
+        if (adminCount <= 1) {
+          return res.status(400).json({ error: 'Cannot delete the last admin user' });
+        }
+      }
+      
+      // Delete the user
+      await dbStorage.deleteUser(id);
+      res.json({ success: true });
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      res.status(500).json({ error: 'Failed to delete user' });
+    }
+  });
+
   // Site Settings Routes
   
   // Get all site settings

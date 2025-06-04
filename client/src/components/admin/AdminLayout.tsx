@@ -11,6 +11,7 @@ import {
   Image as ImageIcon,
   MessageSquare,
   Mail,
+  Users,
   Settings,
   LogOut,
   Menu,
@@ -84,6 +85,12 @@ export function AdminLayout({ children }: AdminLayoutProps) {
       icon: <Mail className="h-5 w-5" />,
       href: '/admin/newsletter',
       active: location.startsWith('/admin/newsletter')
+    },
+    {
+      title: 'Users',
+      icon: <Users className="h-5 w-5" />,
+      href: '/admin/users',
+      active: location.startsWith('/admin/users')
     },
     {
       title: 'Settings',
